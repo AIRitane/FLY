@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>0</Optim>
+            <Optim>2</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -633,6 +633,11 @@
               <FileType>1</FileType>
               <FilePath>..\bsp\vofa.c</FilePath>
             </File>
+            <File>
+              <FileName>encode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\encode.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -647,6 +652,11 @@
               <FileName>RefereeBehaviour.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\application\RefereeBehaviour.c</FilePath>
+            </File>
+            <File>
+              <FileName>RM_Cilent_UI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\application\RM_Cilent_UI.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -679,11 +689,6 @@
           <GroupName>task</GroupName>
           <Files>
             <File>
-              <FileName>DV_tast.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\task\DV_tast.c</FilePath>
-            </File>
-            <File>
               <FileName>shoot_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\task\shoot_task.c</FilePath>
@@ -697,6 +702,16 @@
               <FileName>RefereeTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\task\RefereeTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>DV_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\DV_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\task\ui_task.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -3,7 +3,9 @@
 #include "struct_typedef.h"
 #include "main.h"
 
-typedef __packed struct
+#pragma pack(push, 1)
+
+typedef struct
 {
     fp32 input;        //输入数据
     fp32 out;          //输出数据
@@ -12,13 +14,17 @@ typedef __packed struct
     fp32 frame_period; //时间间隔
 } ramp_function_source_t;
 
-typedef __packed struct
+typedef struct
 {
     fp32 input;        //输入数据
     fp32 out;          //滤波输出的数据
     fp32 num[1];       //滤波参数
     fp32 frame_period; //滤波的时间间隔 单位 s
 } first_order_filter_type_t;
+
+#pragma pack(pop)
+
+
 //快速开方
 extern fp32 invSqrt(fp32 num);
 

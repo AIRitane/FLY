@@ -8,6 +8,7 @@
 #include "gpio.h"
 #include "string.h"
 #include "CanReceiveDecom.h"
+#include "system.h"
 
 #define get_motor_measure(ptr, data)                                    \
     {                                                                   \
@@ -66,6 +67,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	{
 		switch(rx_header.StdId)
 		{
+			
 			case CanMotor1Id:
 			case CanMotor2Id:
 			case CanMotor3Id:
@@ -104,9 +106,18 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 				get_motor_measure(&PitchMotor, rx_data);
 				break;
 			}
+			case 0x51:
+				encoder_pitch.angle = ((int16_t)(rx_data[3] << 8 | rx_data[2]))* 360 / 32768.0f - 180;
+				encoder_pitch.turns = (int16_t)(rx_data[7] << 8 | rx_data[6]);
+				encoder_pitch.palstance = ((int16_t)(rx_data[5] << 8 | rx_data[4]))* 360 / 32768.0f * 10;
+				break;
+			case 0x50:
+				encoder_yaw.angle = ((int16_t)(rx_data[3] << 8 | rx_data[2]))* 360 / 32768.0f - 180;
+				encoder_yaw.turns = (int16_t)(rx_data[7] << 8 | rx_data[6]);
+				encoder_yaw.palstance = ((int16_t)(rx_data[5] << 8 | rx_data[4]))* 360 / 32768.0f * 10;
+				break;
 			default:
 			{
-				//考虑到CAN2总线上还有其他设备，不进行亮灯检测
 				break;
 			}
 		}

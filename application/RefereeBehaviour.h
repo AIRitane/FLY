@@ -201,16 +201,9 @@ typedef __PACKED_STRUCT //0x0301
     uint16_t data_cmd_id;
 		uint16_t sender_ID;
     uint16_t receiver_ID;
+		int16_t Yaw;
+		int16_t Pitch;
 } ext_student_interactive_data_t;
-
-typedef __PACKED_STRUCT
-{
-    float data1;
-    float data2;
-    float data3;
-    uint8_t data4;
-} custom_data_t;
-
 
 typedef __PACKED_STRUCT
 {

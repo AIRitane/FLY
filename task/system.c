@@ -2,6 +2,8 @@
 
 void sys_int()
 {
+	//必要延迟，主要是编码器初始化造成的，否则CAN2总线瘫痪
+	HAL_Delay(1000);
 	//LED初始化
 	HAL_TIM_PWM_Start(&htim5,TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim5,TIM_CHANNEL_2);

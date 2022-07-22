@@ -51,6 +51,7 @@ osThreadId defaultTaskHandle;
 osThreadId shootHandle;
 osThreadId DVHandle;
 osThreadId refereeHandle;
+osThreadId UIHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -61,6 +62,7 @@ void StartDefaultTask(void const * argument);
 void shoot_task(void const * argument);
 void DV_task(void const * argument);
 void RefereeTask(void const * argument);
+void ui_task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -122,6 +124,10 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of referee */
   osThreadDef(referee, RefereeTask, osPriorityNormal, 0, 512);
   refereeHandle = osThreadCreate(osThread(referee), NULL);
+
+  /* definition and creation of UI */
+  osThreadDef(UI, ui_task, osPriorityNormal, 0, 1024);
+  UIHandle = osThreadCreate(osThread(UI), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -199,6 +205,24 @@ __weak void RefereeTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END RefereeTask */
+}
+
+/* USER CODE BEGIN Header_ui_task */
+/**
+* @brief Function implementing the UI thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_ui_task */
+__weak void ui_task(void const * argument)
+{
+  /* USER CODE BEGIN ui_task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END ui_task */
 }
 
 /* Private application code --------------------------------------------------*/
